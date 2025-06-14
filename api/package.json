@@ -1,0 +1,24 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "homeward bound api service",
+  "homepage": "https://github.com/Kirby-Rose/IOD_Capstone_2025#readme",
+  "bugs": {
+    "url": "https://github.com/Kirby-Rose/IOD_Capstone_2025/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kirby-Rose/IOD_Capstone_2025.git"
+  },
+  "license": "ISC",
+  "author": "Kirby-Rose Marks",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0"
+  }
+}
