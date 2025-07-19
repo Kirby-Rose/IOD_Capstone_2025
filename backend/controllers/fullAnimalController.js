@@ -1,8 +1,8 @@
 "use strict";
-import { Status } from "../models/index.js";
+import { FullAnimal } from "../models/index.js";
 
-const getStatuses = (res) => {
-  Status.findAll({})
+const getAnimals = (res) => {
+  FullAnimal.findAll({})
     .then((data) => {
       res.send({ result: 200, data: data });
     })
@@ -12,8 +12,22 @@ const getStatuses = (res) => {
     });
 };
 
-const createStatus = (data, res) => {
-  Status.create(data)
+const getAnimal = (req, res) => {
+  FullAnimal.findOne({ where: { id: req.params.id } })
+    .then((data) => {
+      if (!data) {
+        return res.status(404).json({ error: "Animal not found" });
+      }
+      res.send({ result: 200, data: data });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.send({ result: 500, error: err.message });
+    });
+};
+
+const createAnimal = (data, res) => {
+  FullAnimal.create(data)
     .then((data) => {
       res.send({ result: 200, data: data });
     })
@@ -23,8 +37,8 @@ const createStatus = (data, res) => {
     });
 };
 
-const updateStatus = (req, res) => {
-  Status.update(req.body, {
+const updateAnimal = (req, res) => {
+  FullAnimal.update(req.body, {
     where: { id: req.params.id },
     returning: true,
   })
@@ -37,8 +51,8 @@ const updateStatus = (req, res) => {
     });
 };
 
-const deleteStatus = (req, res) => {
-  Status.destroy({ where: { id: req.params.id } })
+const deleteAnimal = (req, res) => {
+  FullAnimal.destroy({ where: { id: req.params.id } })
     .then((data) => {
       res.send({ result: 200, data: data });
     })
@@ -47,9 +61,11 @@ const deleteStatus = (req, res) => {
       res.send({ result: 500, error: err.message });
     });
 };
+
 export default {
-  getStatuses,
-  createStatus,
-  updateStatus,
-  deleteStatus,
+  getAnimals,
+  getAnimal,
+  createAnimal,
+  updateAnimal,
+  deleteAnimal,
 };

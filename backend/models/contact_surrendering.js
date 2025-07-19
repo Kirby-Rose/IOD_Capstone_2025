@@ -3,45 +3,48 @@ import sequelize from "../dbConnect.js";
 
 const sequelizeInstance = sequelize;
 
-class HomeYard extends Model {}
+class ContactSurrendering extends Model {}
 
-HomeYard.init(
+ContactSurrendering.init(
   {
-    fencedYard: {
-      type: DataTypes.STRING(30),
+    humanId: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
       allowNull: false,
     },
-    allowedInside: {
-      type: DataTypes.STRING(30),
-      allowNull: false,
-    },
-    childrenInHouse: {
+    humanName: {
       type: DataTypes.STRING(50),
       allowNull: false,
     },
-    elderlyVulnerableInHouse: {
-      type: DataTypes.STRING(30),
+    email: {
+      type: DataTypes.STRING(100),
       allowNull: false,
     },
-    otherAnimalsInHouse: {
+    address: {
       type: DataTypes.STRING(200),
       allowNull: false,
     },
-    homeCheck: {
-      type: DataTypes.STRING(30),
+    phone: {
+      type: DataTypes.STRING(20),
       allowNull: false,
     },
-    humanId: {
+    suApplicationDate: {
+      type: DataTypes.DATEONLY,
+      allowNull: false,
+    },
+    animalId: {
       type: DataTypes.INTEGER,
+      primaryKey: true,
       allowNull: false,
     },
   },
+
   {
     sequelize: sequelizeInstance,
-    modelName: "homeYard",
+    tableName: "contact_surrendering",
     timestamps: false,
     freezeTableName: true,
   }
 );
 
-export default HomeYard;
+export default ContactSurrendering;
