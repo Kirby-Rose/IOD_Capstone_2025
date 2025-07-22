@@ -3,6 +3,7 @@
 Homeward Bound. Animal rescue database and front end focused on finding foster carers and rehoming animals in need.
 
 to run app:
+database name: animalDB
 
 Backend:
 
@@ -10,6 +11,7 @@ Backend:
 > npm install dotenv
 > npm install sequelize --save
 > npm install mysql2 --save
+> npm install cors
 
 Require .env file:
 DB_NAME=animalDB
@@ -23,7 +25,4 @@ Frontend:
 
 > npm install
 > npm install express
-
-API:
-
-> npm install express
+> npm install react-router-dom

@@ -7,15 +7,11 @@ class AdoptionApplicant extends Model {}
 
 AdoptionApplicant.init(
   {
-    applicationDate: {
+    aaApplicationDate: {
       type: DataTypes.DATE,
       allowNull: true,
     },
-    homeCheck: {
-      type: DataTypes.STRING(30),
-      allowNull: false,
-    },
-    availability: {
+    aaAvailability: {
       type: DataTypes.STRING(100),
       allowNull: true,
     },

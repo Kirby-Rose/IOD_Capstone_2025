@@ -1,8 +1,9 @@
 "use strict";
-import { Identify } from "../models/index.js";
+import { Profile } from "../models/index.js";
 
-const getIdentifys = (res) => {
-  Identify.findAll({})
+const getProfiles = (res) => {
+  console.log("hit here");
+  Profile.findAll({})
     .then((data) => {
       res.send({ result: 200, data: data });
     })
@@ -12,8 +13,22 @@ const getIdentifys = (res) => {
     });
 };
 
-const createIdentify = (data, res) => {
-  Identify.create(data)
+const getProfile = (req, res) => {
+  Profile.findOne({ where: { id: req.params.id } })
+    .then((data) => {
+      if (!data) {
+        return res.status(404).json({ error: "Profile not found" });
+      }
+      res.send({ result: 200, data: data });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.send({ result: 500, error: err.message });
+    });
+};
+
+const createProfile = (data, res) => {
+  Profile.create(data)
     .then((data) => {
       res.send({ result: 200, data: data });
     })
@@ -23,8 +38,8 @@ const createIdentify = (data, res) => {
     });
 };
 
-const updateIdentify = (req, res) => {
-  Identify.update(req.body, {
+const updateProfile = (req, res) => {
+  Profile.update(req.body, {
     where: { id: req.params.id },
     returning: true,
   })
@@ -37,8 +52,8 @@ const updateIdentify = (req, res) => {
     });
 };
 
-const deleteIdentify = (req, res) => {
-  Identify.destroy({ where: { id: req.params.id } })
+const deleteProfile = (req, res) => {
+  Profile.destroy({ where: { id: req.params.id } })
     .then((data) => {
       res.send({ result: 200, data: data });
     })
@@ -47,9 +62,11 @@ const deleteIdentify = (req, res) => {
       res.send({ result: 500, error: err.message });
     });
 };
+
 export default {
-  getIdentifys,
-  createIdentify,
-  updateIdentify,
-  deleteIdentify,
+  getProfiles,
+  getProfile,
+  createProfile,
+  updateProfile,
+  deleteProfile,
 };

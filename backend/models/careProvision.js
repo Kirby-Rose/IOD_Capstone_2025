@@ -7,7 +7,7 @@ class CareProvision extends Model {}
 
 CareProvision.init(
   {
-    animal: {
+    animalBreed: {
       type: DataTypes.STRING(50),
       allowNull: false,
     },

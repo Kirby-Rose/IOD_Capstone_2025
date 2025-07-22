@@ -7,7 +7,7 @@ class Surrendering extends Model {}
 
 Surrendering.init(
   {
-    applicationDate: {
+    suApplicationDate: {
       type: DataTypes.DATE,
       allowNull: true,
     },
